@@ -1,7 +1,7 @@
 const searchBook = () => {
     const searchValue = document.getElementById('inputBook');
     const searchText = searchValue.value;
-    document.getElementById('searchingText').innerHTML = `You Are Searching For: <span class="text-danger"> ${searchText}</span>`;
+    document.getElementById('searchingText').innerHTML = `You Are Searching For: <span class="text-success"> ${searchText}</span>`;
 
     searchValue.value = '';
     notification('hidden')
