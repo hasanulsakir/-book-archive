@@ -13,7 +13,7 @@ const searchBook = () => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => displayBook(data.docs.slice(0, 20)))
+        .then(data => displayBook(data.docs.slice(0, 30)))
     fetch(url)
         .then(res => res.json())
         .then(data => numFound(data.numFound))
@@ -91,9 +91,9 @@ const displayBook = books => {
                         <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top img-thumbnail shadow-sm rounded-3 img-fluid" min-height="100px" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${book.title.slice(0, 15)}</h5>
-                            <p class="card-text text-primary"><span class="text-dark">Author:</span> ${book?.author_name}</p>
-                            <p class="card-text"><span class="text-secondary">Publisher:</span> ${book?.publisher}</p>
-                            <p class="card-text"><span class="text-secondary">1st Published:</span> ${book.first_publish_year}</p>
+                            <p class="card-text text-primary"><span class="text-dark">Author:</span> ${book?.author_name?.[0]}</p>
+                            <p class="card-text"><span class="text-secondary">Publisher:</span> ${book?.publisher?.[0]}</p>
+                            <p class="card-text"><span class="text-secondary">1st Published:</span> ${book?.first_publish_year}</p>
                         </div>
                         </div>
                         `
