@@ -1,7 +1,7 @@
 const searchBook = () => {
     const searchValue = document.getElementById('inputBook');
     const searchText = searchValue.value;
-
+    document.getElementById('searchingText').innerHTML = `You Are Searching For: <span class="text-danger"> ${searchText}</span>`;
 
     searchValue.value = '';
     notification('hidden')
@@ -88,7 +88,7 @@ const displayBook = books => {
             div.classList.add('col');
             div.innerHTML = `
                         <div class=" card card_box shadow-sm">
-                        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top img-thumbnail shadow-sm rounded-3 img-fluid" alt="...">
+                        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top img-thumbnail shadow-sm rounded-3 img-fluid" min-height="100px" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${book.title.slice(0, 15)}</h5>
                             <p class="card-text text-primary"><span class="text-dark">Author:</span> ${book?.author_name}</p>
