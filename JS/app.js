@@ -9,11 +9,13 @@ const searchBook = () => {
     searchResult('hidden')
     toggleSpinner('block')
 
+    // Search fetch 
     const url = `https://openlibrary.org/search.json?q=${searchText}`
-
     fetch(url)
         .then(res => res.json())
         .then(data => displayBook(data.docs.slice(0, 50)))
+
+    // Total Show Result Number 
     fetch(url)
         .then(res => res.json())
         .then(data => numFound(data.numFound))
@@ -42,6 +44,8 @@ const notification = displayStyle => {
 
 
 }
+
+// Total Result Show Result 
 const resultCount = displayStyle => {
     document.getElementById('totalBook').style.display = displayStyle;
     document.getElementById('result').style.display = displayStyle;
@@ -69,7 +73,7 @@ const numFound = numFound => {
 const displayBook = books => {
     const searchBook = document.getElementById('search-result');
     searchBook.innerHTML = '';
-    let counter = '';
+    let counter = ''; //total show result number store
     if (books.length === 0) {
 
         document.getElementById('notify').innerText = "Book Not Found !";
