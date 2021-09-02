@@ -69,7 +69,7 @@ const numFound = numFound => {
 const displayBook = books => {
     const searchBook = document.getElementById('search-result');
     searchBook.innerHTML = '';
-    console.log(books);
+
     if (books.length === 0) {
 
         document.getElementById('notify').innerText = "Book Not Found !";
