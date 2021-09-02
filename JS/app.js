@@ -13,7 +13,7 @@ const searchBook = () => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => displayBook(data.docs.slice(0, 30)))
+        .then(data => displayBook(data.docs.slice(0, 50)))
     fetch(url)
         .then(res => res.json())
         .then(data => numFound(data.numFound))
@@ -69,7 +69,7 @@ const numFound = numFound => {
 const displayBook = books => {
     const searchBook = document.getElementById('search-result');
     searchBook.innerHTML = '';
-
+    let counter = '';
     if (books.length === 0) {
 
         document.getElementById('notify').innerText = "Book Not Found !";
@@ -77,16 +77,19 @@ const displayBook = books => {
         resultCount('none');
         toggleSpinner('none');
     } else {
-        document.getElementById('result').innerText = `Show ${books.length} Of `;
-        resultCount('inline-block');
+
+
 
         document.getElementById('notify').innerText = "";
+
         books.forEach(book => {
+            if (book.cover_i !== undefined && book.author_name !== undefined && book.publisher !== undefined && book.first_publish_year !== undefined) {
 
-            const div = document.createElement('div');
+                counter++;
+                const div = document.createElement('div');
 
-            div.classList.add('col');
-            div.innerHTML = `
+                div.classList.add('col');
+                div.innerHTML = `
                         <div class=" card card_box shadow-sm">
                         <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top img-thumbnail shadow-sm rounded-3 img-fluid" min-height="100px" alt="...">
                         <div class="card-body">
@@ -97,10 +100,14 @@ const displayBook = books => {
                         </div>
                         </div>
                         `
-            searchBook.appendChild(div);
+                searchBook.appendChild(div);
 
+            }
 
         });
+
+        document.getElementById('result').innerText = `Show ${counter} Of `;
+        resultCount('inline-block');
         searchResult('visible')
         toggleSpinner('none')
 
